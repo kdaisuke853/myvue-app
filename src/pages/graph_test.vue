@@ -5,64 +5,41 @@
       <br>
       <select v-model="selected">
           <option  value="表示したいグラフを選んでください">Please Select</option>
-            <option value="Open">始値(open)</option>
-            <option value="Low">安値(low)</option>
-            <option value="High">高値(high)</option>
-            <option value="Close">終値(close)</option>
+            <option value="Open">始値(Open)</option>
+            <option value="Low">安値(Low)</option>
+            <option value="High">高値(High)</option>
+            <option value="Close">終値(Close)</option>
       </select>
 
       <div id="app">
 
         <p v-if="selected == '表示したいグラフを選んでください'">
-          <line-chart
-            :data="chartData_open"
-            :options="options"
-            :height="100"
-          ></line-chart>
-
-          <line-chart
-            :data="chartData_low"
-            :options="options"
-            :height="100"
-          ></line-chart>
-
-          <line-chart
-            :data="chartData_high"
-            :options="options"
-            :height="100"
-          ></line-chart>
-
-          <line-chart
-            :data="chartData_close"
-            :options="options"
-            :height="100"
-          ></line-chart>
         </p>
 
         <p v-else-if="selected == 'Open'">
           <line-chart
-            :data="chartData_open"
+            :data="chartData_Open"
             :options="options"
             :height="100"
         ></line-chart></p>
 
         <p v-else-if="selected == 'Low'">
           <line-chart
-            :data="chartData_low"
+            :data="chartData_Low"
             :options="options"
             :height="100"
         ></line-chart></p>
 
         <p v-else-if="selected == 'High'">
           <line-chart
-            :data="chartData_high"
+            :data="chartData_High"
             :options="options"
             :height="100"
         ></line-chart></p>
 
         <p v-else-if="selected == 'Close'">
           <line-chart
-            :data="chartData_close"
+            :data="chartData_Close"
             :options="options"
             :height="100"
         ></line-chart></p>
@@ -89,57 +66,57 @@ export default {
       datas:JSON.parse(localStorage.getItem('datalist')),
 
 
-      chartData_open: {
+      chartData_Open: {
         //x軸
-        labels: [datas2.timestamp[235], datas2.timestamp[236], datas2.timestamp[237],datas2.timestamp[238], datas2.timestamp[239], datas2.timestamp[240],datas2.timestamp[241], datas2.timestamp[242], datas2.timestamp[243]],
+        labels: [datas2.Date[235], datas2.Date[236], datas2.Date[237],datas2.Date[238], datas2.Date[239], datas2.Date[240],datas2.Date[241], datas2.Date[242], datas2.Date[243]],
         // データ詳細
         datasets: [
           {
           //グラフタイトル
             label: datas2.name,
             //データ値(y軸)
-            data: [datas2.open[235], datas2.open[236], datas2.open[237],datas2.open[238], datas2.open[239], datas2.open[240],datas2.open[241], datas2.open[242], datas2.open[243]],
+            data: [datas2.Open[235], datas2.Open[236], datas2.Open[237],datas2.Open[238], datas2.Open[239], datas2.Open[240],datas2.Open[241], datas2.Open[242], datas2.Open[243]],
             backgroundColor: "#6090EF",
           }
         ]
       },
-      chartData_close: {
+      chartData_Close: {
         //x軸
-        labels: [datas2.timestamp[235], datas2.timestamp[236], datas2.timestamp[237],datas2.timestamp[238], datas2.timestamp[239], datas2.timestamp[240],datas2.timestamp[241], datas2.timestamp[242], datas2.timestamp[243]],
+        labels: [datas2.Date[235], datas2.Date[236], datas2.Date[237],datas2.Date[238], datas2.Date[239], datas2.Date[240],datas2.Date[241], datas2.Date[242], datas2.Date[243]],
         // データ詳細
         datasets: [
           {
           //グラフタイトル
             label: datas2.name,
             //データ値(y軸)
-            data: [datas2.close[235], datas2.close[236], datas2.close[237],datas2.close[238], datas2.close[239], datas2.close[240],datas2.close[241], datas2.close[242], datas2.close[243]],
+            data: [datas2.Close[235], datas2.Close[236], datas2.Close[237],datas2.Close[238], datas2.Close[239], datas2.Close[240],datas2.Close[241], datas2.Close[242], datas2.Close[243]],
             backgroundColor:"#98fb98",
           }
         ]
       },
-      chartData_low: {
+      chartData_Low: {
         //x軸
-        labels: [datas2.timestamp[235], datas2.timestamp[236], datas2.timestamp[237],datas2.timestamp[238], datas2.timestamp[239], datas2.timestamp[240],datas2.timestamp[241], datas2.timestamp[242], datas2.timestamp[243]],
+        labels: [datas2.Date[235], datas2.Date[236], datas2.Date[237],datas2.Date[238], datas2.Date[239], datas2.Date[240],datas2.Date[241], datas2.Date[242], datas2.Date[243]],
         // データ詳細
         datasets: [
           {
           //グラフタイトル
             label: datas2.name,
             //データ値(y軸)
-            data: [datas2.low[235], datas2.low[236], datas2.low[237],datas2.low[238], datas2.low[239], datas2.low[240],datas2.low[241], datas2.low[242], datas2.low[243]],
+            data: [datas2.Low[235], datas2.Low[236], datas2.Low[237],datas2.Low[238], datas2.Low[239], datas2.Low[240],datas2.Low[241], datas2.Low[242], datas2.Low[243]],
           }
         ]
       },
-      chartData_high: {
+      chartData_High: {
         //x軸
-        labels: [datas2.timestamp[235], datas2.timestamp[236], datas2.timestamp[237],datas2.timestamp[238], datas2.timestamp[239], datas2.timestamp[240],datas2.timestamp[241], datas2.timestamp[242], datas2.timestamp[243]],
+        labels: [datas2.Date[235], datas2.Date[236], datas2.Date[237],datas2.Date[238], datas2.Date[239], datas2.Date[240],datas2.Date[241], datas2.Date[242], datas2.Date[243]],
         // データ詳細
         datasets: [
           {
           //グラフタイトル
             label: datas2.name,
             //データ値(y軸)
-            data: [datas2.high[235], datas2.high[236], datas2.high[237],datas2.high[238], datas2.high[239], datas2.high[240],datas2.high[241], datas2.high[242], datas2.high[243]],
+            data: [datas2.High[235], datas2.High[236], datas2.High[237],datas2.High[238], datas2.High[239], datas2.High[240],datas2.High[241], datas2.High[242], datas2.High[243]],
           }
         ]
       },
