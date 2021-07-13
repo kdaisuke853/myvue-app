@@ -4,11 +4,18 @@
       <br>
       <br>
       <select v-model="selected">
-          <option  value="表示したいグラフを選んでください">Please Select</option>
+        <!--
+            <option value="表示したいグラフを選んでください">Please Select</option>
             <option value="Open">始値(Open)</option>
             <option value="Low">安値(Low)</option>
             <option value="High">高値(High)</option>
             <option value="Close">終値(Close)</option>
+          -->
+            <option>Open</option>
+            <option>Low</option>
+            <option>High</option>
+            <option>Close</option>
+
       </select>
 
       <div id="app">
@@ -122,9 +129,8 @@ export default {
       },
       options: {responsive: true
                       , maintainAspectRatio: true
-                      , animation: false},
+                      },
       addFlag: false,
-
     };
   },
 };

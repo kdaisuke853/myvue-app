@@ -31,12 +31,20 @@
       <template #modal-title>
         {{value_code.name}}の株価
       </template>
-      銘柄名:{{value_code.name}} 現在価格:{{value_code.val}}円({{value_code.time}})
+
+      <div v-if="show">
+        銘柄名:{{value_code.name}} 現在価格:{{value_code.val}}円({{value_code.time}})
+      </div>
+
       <!--
       <div v-if="show"> 
         銘柄名:{{value_code.name}} 現在価格:{{value_code.val}}円({{value_code.time}})
         <button type="button" @click=" show = !show">リセット</button>
       -->  
+
+      <div v-if="!show">
+        株価取得に失敗しました。
+      </div>
     </b-modal>
 </div>
 </template>
@@ -66,6 +74,7 @@ export default {
   },
   methods: {
     post_code() {
+      if ( this.code_input.match(/^[0-9]{4}$/) ){
       axios.get(
         '/api/output',{
         params: {
@@ -76,10 +85,14 @@ export default {
         console.log(response);
         //document.getElementById('wrap').insertAdjacentHTML('beforeend','株価:' + response.data.val + '時間:' + response.data.time);
         this.value = response.data
-      });
+        this.show = !this.show
+      }).catch(error => alert(error + '\nErrormessage:このコードは存在しません'));
       this.code_input = ""
     }
-    
+  else
+    alert('株価コードを入力してください(数字4桁)')
+    },
+
   }
 }
 </script>

@@ -14,12 +14,13 @@
         タスク名:{{item.title}} <button type="button" class="button" @click="delete_task(item.id)">削除</button>
       </li>  
     </ul>
-    </div>
+    
     <br>
     <!--タスク作成-->
       <label for="title">タスク名:</label>
       <input type="text" id="task" v-model="title">
       <button type="button" @click="new_task()">作成する</button>
+    </div>
 
     </div>
 </template>
@@ -68,12 +69,14 @@ export default {
     console.log(`${this.idToken}`)
     console.log(this.title)
     axios.post(
-      "/api/tasks/",data,
-
-    {
+      "/api/tasks/", data,
+      {
+    headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Token ${this.idToken}`,  
-    })
+        'Authorization': `Token ${this.idToken}`
+      }
+    }
+    )
     .then(response => {
       console.log(response);
     })
@@ -87,8 +90,11 @@ export default {
   delete_task(id){
     axios.delete(
       `/api/tasks/${id}`,
+      {
+        headers:
     {
-      'Authorization': `Token ${this.idToken}`
+     'Authorization': `Token ${this.idToken}`
+    }
     })
     .then(response => {
       console.log(response);
