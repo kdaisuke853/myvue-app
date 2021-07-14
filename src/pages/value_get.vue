@@ -29,7 +29,7 @@
     
     <b-modal id="value_code" hide-footer>
       <template #modal-title>
-        {{value_code.name}}の株価
+        株価取得結果
       </template>
 
       <div v-if="show">
@@ -40,11 +40,12 @@
       <div v-if="show"> 
         銘柄名:{{value_code.name}} 現在価格:{{value_code.val}}円({{value_code.time}})
         <button type="button" @click=" show = !show">リセット</button>
-      -->  
+      -->
 
       <div v-if="!show">
         株価取得に失敗しました。
       </div>
+    
     </b-modal>
 </div>
 </template>
@@ -85,12 +86,20 @@ export default {
         console.log(response);
         //document.getElementById('wrap').insertAdjacentHTML('beforeend','株価:' + response.data.val + '時間:' + response.data.time);
         this.value = response.data
-        this.show = !this.show
+        //this.show = !this.show
+        console.log(response.data)
+
+        if (response.data != "形式が違います"){
+          this.show = true
+        }
+        
       }).catch(error => alert(error + '\nErrormessage:このコードは存在しません'));
       this.code_input = ""
+
     }
   else
     alert('株価コードを入力してください(数字4桁)')
+      this.show = false
     },
 
   }

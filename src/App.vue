@@ -1,18 +1,21 @@
+
 <template>
 <div>
   <b-navbar toggleable="lg" type="dark" variant="primary">
     <b-navbar-brand href="#">myapp</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+  
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item to="/" class="header--link" v-if="!isAuthenticated">トップ</b-nav-item>
+        <b-nav-item to="/sign_up" class="header--link" v-if="!isAuthenticated">ユーザ登録</b-nav-item>
         <b-nav-item to="/django_auth" class="header--link" v-if="!isAuthenticated">ログイン</b-nav-item>
         <b-nav-item to="/django_task" class="header--link" v-if="isAuthenticated">タスク確認</b-nav-item>
         <b-nav-item to="/value_get" class="header--link" v-if="isAuthenticated" >株価取得</b-nav-item>
-        <b-nav-item to="/value_gets" class="header--link" v-if="isAuthenticated">株価取得(複数)</b-nav-item>
-        <b-nav-item to="/post_data" class="header--link" v-if="isAuthenticated">株価機械学習</b-nav-item>
+        <b-nav-item to="/value_gets" class="header--link" v-if="isAuthenticated">株価取得(1年)</b-nav-item>
+        <b-nav-item to="/post_data" class="header--link" v-if="isAuthenticated">株価予測</b-nav-item>
         <b-nav-item to="/graph_test" class="header--link" v-if="isAuthenticated">株価グラフ</b-nav-item>
       </b-navbar-nav>
       

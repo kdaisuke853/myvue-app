@@ -13,6 +13,7 @@ import value_gets from './pages/django_outputs'
 import after_auth from './pages/After_auth'
 import post_data from './pages/post_data'
 import graph_test from './pages/graph_test'
+import sign_up from './pages/signup_post'
 
 Vue.use(Router);
 
@@ -122,6 +123,19 @@ export default new Router({
         }
       },
     },
+
+    {
+      path: "/sign_up",
+      component: sign_up,
+      beforeEnter(to, from, next) {
+        if (store.getters.idToken) {
+          next("/");
+        } else {
+          next();
+        }
+      },
+    },
+
     {
       path: "/register",
       component: Register,

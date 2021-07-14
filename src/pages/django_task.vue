@@ -17,6 +17,7 @@
     
     <br>
     <!--タスク作成-->
+    <h3>タスク作成</h3>
       <label for="title">タスク名:</label>
       <input type="text" id="task" v-model="title">
       <button type="button" @click="new_task()">作成する</button>
@@ -60,6 +61,7 @@ export default {
             //document.write('<p>'+ response.data + '</p>');
             this.info = response.data
             //document.getElementById('wrap').insertAdjacentHTML('beforeend',response.data['1'].title);
+
         });
     },
     new_task(){
@@ -101,6 +103,8 @@ export default {
     })
     .catch(error =>{
       console.log(error);
+      alert(error + '\n既に存在しないタスクです')
+
     })
     this.title = "";
   },

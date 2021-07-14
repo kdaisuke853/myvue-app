@@ -12,10 +12,12 @@
 h1 {
     margin: 0; padding: 0;
     font-size: 20px;
+    /*color: azure;*/
  }
 
 h2{
    text-align: center;
+   /*color: azure;*/
 }
 
 .container{
@@ -101,3 +103,9 @@ button{
    align-items: center;
    justify-content: center;
 }
+/*
+body {
+   background-image: url("../image/top2.jpg");
+   background-size:cover;
+ }
+*/
