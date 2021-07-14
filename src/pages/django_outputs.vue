@@ -54,7 +54,9 @@
     </div>
 
     <div v-if="!content">
-      <h3>既に1年分の株価取得ずみです。</h3>
+      <h3>現在、{{value.name}}の1年分の株価データを取得ずみです。</h3>
+      <b-button v-b-modal.modal-1 @click="datareset()" class="m-5">リセット</b-button>
+
     </div>
 
   </div>
@@ -104,7 +106,7 @@ export default {
 
         //this.$router.push('/post_data');
         this.show = !this.show
-        this.content = !this.content
+        this.content = false
 
       }).catch(error => alert(error + '\nErrormessage:このコードは存在しません'));
       //this.code_input = ""
@@ -115,6 +117,7 @@ export default {
 
     datareset(){
       localStorage.clear();
+      this.content = true
     }
   }
 }
